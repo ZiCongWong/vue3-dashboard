@@ -8,7 +8,7 @@ import 'element-plus/dist/index.css'
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 import gloablComponent from './components/index'
 import '@/styles/index.scss'
-
+import pinia from '@/store'
 
 const app = createApp(App)
 app.use(ElementPlus, {
@@ -16,4 +16,5 @@ app.use(ElementPlus, {
 })
 app.use(router)
 app.use(gloablComponent)
+app.use(pinia)
 app.mount('#app')
