@@ -1,5 +1,5 @@
 export default {
-  title: 'EDI-Dashboard',
-  logo: '/public/edi-w-modified.png',
+  title: 'Dashboard',
+  logo: '/edi-w-modified.png',
   logoHide: true,
 }

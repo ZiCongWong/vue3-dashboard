@@ -18,10 +18,13 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
+    "animate.css": "^4.1.1",
     "axios": "^1.7.5",
     "element-plus": "^2.8.1",
+    "nprogress": "^0.2.0",
     "pinia": "^2.2.2",
     "pinia-plugin-persistedstate": "4.0.0-alpha.4",
+    "vite-plugin-vue-setup-extend": "^0.4.0",
     "vue": "^3.4.37",
     "vue-router": "^4.4.3"
   },

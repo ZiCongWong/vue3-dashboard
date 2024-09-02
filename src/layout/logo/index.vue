@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts" name="Logo">
 import setting from '@/setting.ts'
 </script>
 
@@ -15,7 +15,7 @@ import setting from '@/setting.ts'
   color: white;
   display: flex;
   align-items: center;
-
+  overflow: hidden;
   p {
     font-size: $base-logo-title-fontSize;
   }

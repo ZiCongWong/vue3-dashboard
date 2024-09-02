@@ -9,6 +9,8 @@ import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 import gloablComponent from './components/index'
 import '@/styles/index.scss'
 import pinia from '@/store'
+import "animate.css"
+import './permission.ts'
 
 const app = createApp(App)
 app.use(ElementPlus, {

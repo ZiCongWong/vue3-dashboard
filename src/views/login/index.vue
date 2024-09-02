@@ -3,12 +3,13 @@ import { getTime } from '@/utils/time.ts'
 import { User, Lock } from '@element-plus/icons-vue'
 import { reactive, ref } from 'vue'
 import useUserStore from '@/store/modules/user.ts'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { ElNotification } from 'element-plus'
 
 let loginForms = ref()
 let loading = ref(false)
 let $router = useRouter()
+let route = useRoute()
 let loginForm = reactive({ username: 'admin', password: '111111' })
 let useStore = useUserStore()
 const login = async () => {
@@ -18,8 +19,10 @@ const login = async () => {
   loading.value = true
   try {
     await useStore.userLogin(loginForm)
-    $router.push('/')
-    ElNotification({ type: 'success', message: 'Welcome', title: `Hi,Good ${getTime()}` })
+    
+    let redirect: any = route.query.redirect
+    await $router.push({ path: redirect || '/' })
+    ElNotification({ type: 'success', message: 'Welcome', title: `Hi,Good ${getTime()}`,duration:1500 })
   } catch (error) {
     loading.value = false
     ElNotification({ type: 'error', message: (error as Error).message })

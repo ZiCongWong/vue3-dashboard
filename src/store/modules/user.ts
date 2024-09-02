@@ -1,24 +1,50 @@
 import { defineStore } from 'pinia'
-import { reqLogin } from '@/api/user'
-import type { loginFormData, loginResponseData } from '@/api/user/type.ts'
-import { ref } from 'vue'
+import { reqLogin, reqUserInfo, reqLogout } from '@/api/user'
+import type { loginFormData, loginResponseData, userInfo } from '@/api/user/type.ts'
 import type { UserState } from '@/store/modules/type.ts'
 
-const useUserStore = defineStore('user', () => {
-  const token = ref<UserState>('')
-  const userLogin = async (data: loginFormData) => {
-    let res: loginResponseData = await reqLogin(data)
-    if (res.code === 200) {
-      token.value = res.data.token as string
-      return 'OK'
-    } else {
-      return Promise.reject(new Error(res.data.message))
+const useUserStore = defineStore('user', {
+  state: (): UserState => {
+    return {
+      token: localStorage.getItem('token'),
+      username: '',
+      avatar: '',
     }
-  }
-  return {
-    userLogin,
-    token,
-  }
-}, { persist: true })
+  },
+  actions: {
+    async userLogin(data: any) {
+      let res: any = await reqLogin(data)
+      if (res.code === 200) {
+        this.token = res.data as string
+        localStorage.setItem('token', res.data)
+        return 'OK'
+      } else {
+        return Promise.reject(new Error(res.data))
+      }
+    },
+    async userInfo() {
+      let res = await reqUserInfo()
+      if (res.code === 200) {
+        this.username = res.data.name
+        this.avatar = res.data.avatar
+      } else {
+        return Promise.reject(new Error(res.message))
+      }
+    },
+    async userLogout() {
+      let res = await reqLogout()
+      if (res.code === 200) {
+        this.token = ''
+        this.username = ''
+        this.avatar = ''
+        localStorage.removeItem('token')
+        return 'OK'
+      }else{
+        return Promise.reject(new Error(res.message))
+      }
+
+    },
+  },
+})
 
 export default useUserStore

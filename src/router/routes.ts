@@ -15,7 +15,7 @@ export const constantRoute: MenuSate = [
     component: () => import('@/layout/index.vue'),
     name: 'layout',
     meta: {
-      title: 'Layout',
+      title: '',
       hidden: false,
     },
     redirect: '/home',
@@ -63,8 +63,9 @@ export const constantRoute: MenuSate = [
     path: '/acl',
     name: 'acl',
     component: () => import('@/layout/index.vue'),
+    redirect: '/acl/user',
     meta: {
-      title: 'PermissionsManagement',
+      title: 'Permissions',
       hidden: false,
       icon: 'Lock',
     },
@@ -73,7 +74,7 @@ export const constantRoute: MenuSate = [
       component: () => import('@/views/acl/User/index.vue'),
       name: 'Acl',
       meta: {
-        title: 'UserManagement',
+        title: 'User',
         hidden: false,
         icon: 'User',
       },
@@ -82,7 +83,7 @@ export const constantRoute: MenuSate = [
       component: () => import('@/views/acl/role/index.vue'),
       name: 'Role',
       meta: {
-        title: 'RoleManagement',
+        title: 'Role',
         hidden: false,
         icon: 'UserFilled',
       },
@@ -91,7 +92,7 @@ export const constantRoute: MenuSate = [
       component: () => import('@/views/acl/permission/index.vue'),
       name: 'Menu',
       meta: {
-        title: 'MenuManagement',
+        title: 'Menu',
         hidden: false,
         icon: 'Monitor',
       },
@@ -101,8 +102,9 @@ export const constantRoute: MenuSate = [
     path: '/product',
     component: () => import('@/layout/index.vue'),
     name: 'Product',
+    redirect: '/product/trademark',
     meta: {
-      title: 'MerchandiseManagement',
+      title: 'Merchant',
       icon: 'Goods',
       hidden: false,
     },
@@ -112,7 +114,7 @@ export const constantRoute: MenuSate = [
         component: () => import('@/views/product/trademark/index.vue'),
         name: 'trademark',
         meta:{
-          title: 'BrandManagement',
+          title: 'Brand',
           icon: 'ShoppingCartFull',
           hidden: false,
         }
@@ -122,7 +124,7 @@ export const constantRoute: MenuSate = [
         component: () => import('@/views/product/attr/index.vue'),
         name: 'attr',
         meta:{
-          title: 'AttributeManagement',
+          title: 'Attribute',
           icon: 'ChromeFilled',
           hidden: false,
         }
@@ -132,7 +134,7 @@ export const constantRoute: MenuSate = [
         component: () => import('@/views/product/spu/index.vue'),
         name: 'spu',
         meta:{
-          title: 'SpuManagement',
+          title: 'Spu',
           icon: 'Calendar',
           hidden: false,
         }
@@ -142,7 +144,7 @@ export const constantRoute: MenuSate = [
         component: () => import('@/views/product/sku/index.vue'),
         name: 'sku',
         meta:{
-          title: 'SkuManagement',
+          title: 'Sku',
           icon: 'Orange',
           hidden: false,
         }
