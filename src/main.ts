@@ -11,11 +11,15 @@ import '@/styles/index.scss'
 import pinia from '@/store'
 import "animate.css"
 import './permission.ts'
+import * as echarts from 'echarts'
 
 const app = createApp(App)
 app.use(ElementPlus, {
   locale: zhCn,
 })
+
+app.config.globalProperties.$echarts = echarts
+
 app.use(router)
 app.use(gloablComponent)
 app.use(pinia)

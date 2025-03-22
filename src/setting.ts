@@ -1,5 +1,5 @@
 export default {
-  title: 'Dashboard',
-  logo: '/edi-w-modified.png',
+  title: '校园物联网平台',
+  logo: '/edi-w.png',
   logoHide: true,
 }

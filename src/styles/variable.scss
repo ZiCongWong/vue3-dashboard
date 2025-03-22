@@ -1,9 +1,21 @@
-$base-menu-width: 260px;
+$base-menu-width: 220px;
 $base-menu-mini-width: 65px;
-$base-menu-background: #001529;
+$base-menu-background: #ffffff;
 $base-tabbar-height: 50px;
 $base-text-color: pink;
 //logo
 $base-menu-logo-height: 90px;
-$base-logo-title-fontSize: 20px;
+$base-logo-title-fontSize: 16px;
 
+$base-font-family: 'PF';
+
+@forward "element-plus/theme-chalk/src/common/var.scss" with (
+  $colors:(
+  'primary':(
+  'base':#6b21e1,
+  )
+  ),
+  $border-radius:(
+  'base':9px,
+  )
+);

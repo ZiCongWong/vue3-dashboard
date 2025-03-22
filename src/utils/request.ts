@@ -11,7 +11,7 @@ let request = axios.create({
 request.interceptors.request.use(config => {
   let userStore = useUserStore()
   if (userStore.token) {
-    config.headers.token = userStore.token
+    config.headers.Authorization = "Bearer "+userStore.token
   }
   return config
 })

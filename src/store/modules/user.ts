@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
-import { reqLogin, reqUserInfo, reqLogout } from '@/api/user'
-import type { loginFormData, loginResponseData, userInfo } from '@/api/user/type.ts'
+import { reqLogin, reqUserInfo, reqLogout, reqRegister } from '@/api/user'
+import type { UserInfoResponseData, loginResponseData, loginFormData, registerFormData } from '@/api/user/type.ts'
 import type { UserState } from '@/store/modules/type.ts'
 
 const useUserStore = defineStore('user', {
@@ -12,27 +12,36 @@ const useUserStore = defineStore('user', {
     }
   },
   actions: {
-    async userLogin(data: any) {
-      let res: any = await reqLogin(data)
+    async userRegister(data:registerFormData){
+      let res: registerRsData = await reqRegister(data)
       if (res.code === 200) {
-        this.token = res.data as string
-        localStorage.setItem('token', res.data)
+        return 'OK'
+      }else {
+        return Promise.reject(new Error(res.data))
+      }
+    },
+    async userLogin(data: loginFormData) {
+      let res: loginResponseData = await reqLogin(data)
+      if (res.code === 200) {
+        this.token = res.data.token as string
+        // console.log(this.token)
+        localStorage.setItem('token', res.data.token)
         return 'OK'
       } else {
         return Promise.reject(new Error(res.data))
       }
     },
     async userInfo() {
-      let res = await reqUserInfo()
+      let res:UserInfoResponseData = await reqUserInfo(this.username)
       if (res.code === 200) {
-        this.username = res.data.name
+        this.username = res.data.nickname
         this.avatar = res.data.avatar
       } else {
         return Promise.reject(new Error(res.message))
       }
     },
     async userLogout() {
-      let res = await reqLogout()
+      let res:any = await reqLogout()
       if (res.code === 200) {
         this.token = ''
         this.username = ''

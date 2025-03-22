@@ -34,7 +34,7 @@ export default defineConfig(({ command, mode }) => {
       proxy: {
         [env.VITE_APP_BASE_API]: {
           target: env.VITE_SERVE,
-          changeOrigin: true,
+          changeOrigin: false,
           rewrite: (path) => path.replace(/^\/api/, ''),
         },
       },

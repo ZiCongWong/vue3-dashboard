@@ -27,9 +27,9 @@ watch(() => useSettingStore.refresh, () => {
     <div class="layout_slider" :class="{fold:useSettingStore.fold}">
       <Logo></Logo>
       <el-scrollbar class="scrollBar">
-        <el-menu background-color="#001529" text-color="white" mode="vertical"
+        <el-menu text-color="black" mode="vertical"
                  router
-                 active-text-color='pink' :default-active="route.path" :collapse="useSettingStore.fold"
+                 :default-active="route.path" :collapse="useSettingStore.fold"
                  collapse-transition>
           <Menu :menuList="menuStore.menuRoutes"></Menu>
         </el-menu>
@@ -57,6 +57,8 @@ watch(() => useSettingStore.refresh, () => {
 
 
   .layout_slider {
+    z-index: 99;
+    box-shadow: 8px 0 16px 0 rgba(0, 0, 0, 0.1); /* 右侧阴影 */
     width: $base-menu-width;
     height: 100vh;
     background: $base-menu-background;
@@ -78,6 +80,7 @@ watch(() => useSettingStore.refresh, () => {
   }
 
   .layout_tabBar {
+    z-index: 98;
     width: calc(100% - $base-menu-width);
     height: $base-tabbar-height;
     position: fixed;
@@ -85,7 +88,7 @@ watch(() => useSettingStore.refresh, () => {
     left: $base-menu-width;
     padding: 0 20px 0 0;
     transition: all 0.3s;
-    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.6);
+
 
     &.fold {
       width: calc(100vw - $base-menu-mini-width);
@@ -102,7 +105,11 @@ watch(() => useSettingStore.refresh, () => {
     padding: 20px;
     overflow: auto;
     transition: all 0.3s;
-
+    box-shadow:
+      -8px -8px 16px 0 rgba(0, 0, 0, 0.3) inset, /* 左上内阴影 */
+      0 0 0 0 transparent; /* 右侧无阴影 */
+    background: #F7FAFC;
+    //box-shadow: -8px -8px 16px 0 rgba(0, 0, 0, 0.3) inset; /* 左上内阴影 */
     &.fold {
       width: calc(100vw - $base-menu-mini-width);
       left: $base-menu-mini-width

@@ -51,7 +51,7 @@ const Ulogout = async () => {
       <el-button size="default" icon="Refresh" circle @click="updateRefresh"></el-button>
       <el-button size="default" icon="FullScreen" circle @click="fullScreen"></el-button>
       <el-button size="default" icon="Setting" circle></el-button>
-      <img :src="userStore.avatar" style="border-radius: 50%; width: 32px;height: 32px ;margin: 0px
+      <img :src="userStore.avatar" style="border-radius: 50%; width: 32px;height: 32px ;margin: 0
       10px"
            alt="">
       <!--      dropdown-->

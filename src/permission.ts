@@ -2,13 +2,13 @@ import router from '@/router'
 import nprogress from 'nprogress'
 import setting from './setting'
 import 'nprogress/nprogress.css'
-nprogress.configure({ showSpinner: false })
 import pinia from '@/store'
 import useUserStore from '@/store/modules/user.ts'
 
+nprogress.configure({ showSpinner: false })
 let userStore = useUserStore(pinia)
 router.beforeEach(async (to: any, from: any, next: any) => {
-  document.title = `${setting.title} - ${to.meta.title}`
+  document.title = `${to.meta.title} - ${setting.title}`
   //to:你将要访问那个路由
   //from:你从来个路由而来
   //next:路由的放行函数
@@ -47,7 +47,7 @@ router.beforeEach(async (to: any, from: any, next: any) => {
     }
   } else {
     //用户未登录判断
-    if (to.path == '/login') {
+    if (to.path == '/login' || to.path == '/register' || to.path == '/forget') {
       next()
     } else {
       next({ path: '/login', query: { redirect: to.path } })
